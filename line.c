@@ -40,9 +40,9 @@ int main(void)
     //l->val=0;
 
     addPoint(&l,2);
-    //addPoint(&l,3);
+    addPoint(&l,3);
 
-    //displayLine(l);
+    displayLine(l);
 
     return 0;
 }
