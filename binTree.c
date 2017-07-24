@@ -31,6 +31,20 @@ BinTree * mergeTree(BinTree * t1,BinTree * t2)
     return returnT;
 }
 
+BinTree * invertTree(BinTree * root)
+{
+    BinTree * returnT;
+    if(root==NULL)
+    {
+        return NULL;
+    }
+    returnT=malloc(sizeof(BinTree));
+    returnT->val=root->val;
+    returnT->left=invertTree(returnT->right);
+    returnT->right=invertTree(returnT->left);
+    return returnT;
+}
+
 void main()
 {
 
