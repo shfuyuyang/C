@@ -8,6 +8,27 @@ typedef struct binTree
     struct binTree * right;
 }BinTree;
 
+typedef struct line
+{
+    int val;
+    struct line * next;
+}Line;
+
+void creatBinaryTree(BinTree **root,int val)
+{
+    if(*root==NULL)
+    {
+        *root=malloc(sizeof(BinTree));
+    }
+    if(val<=1)
+    {
+        return;
+    }
+    (*root)->val=val;
+    creatBinaryTree(&((*root)->left),val-1);
+    creatBinaryTree(&((*root)->right),val-1);
+}
+
 BinTree * mergeTree(BinTree * t1,BinTree * t2)
 {
     BinTree * returnT;
@@ -88,13 +109,33 @@ int diameterOfBinaryTree(BinTree * root)
     return max;
 }
 
+void binaryTreePrintLevel(BinTree *root,int level)
+{
+    if(root==NULL)
+    {
+        return;
+    }
+    if(level==0)
+    {
+        printf("%d ",root->val);
+        return;
+    }
+    binaryTreePrintLevel(root->left,level-1);
+    binaryTreePrintLevel(root->right,level-1);
+}
+
 void main()
 {
     BinTree * root;
     int a=0;
-    root=malloc(sizeof(BinTree));
-    root->val=1;
-    a=diameterOfBinaryTree(root);
-    printf("%d\n",a);
+    int deep=0;
 
+    root=malloc(sizeof(BinTree));
+    creatBinaryTree(&root,10);
+    deep=getBinaryTreeLongest(root);
+    for(a=0;a<deep;a++)
+    {
+        binaryTreePrintLevel(root,a);
+        printf("\n");
+    }
 }
