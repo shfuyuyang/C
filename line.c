@@ -11,7 +11,8 @@ void addPoint(Line **l,int val)
 {
     if(*l==NULL)
     {
-        *l=malloc(sizeof(Line));
+        *l=malloc(sizeof(Line*));
+        //*(*l)=malloc(sizeof(Line));
         (*l)->val=val;
     }
     else
@@ -36,13 +37,15 @@ void displayLine(Line *l)
 int main(void)
 {
     Line *l;
-    l=malloc(sizeof(Line));
-    //l->val=0;
-
+/*
     addPoint(&l,2);
     addPoint(&l,3);
 
     displayLine(l);
+*/
+    int a=12;
+
+    printf("%d\n",a);
 
     return 0;
 }
